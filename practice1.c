@@ -18,7 +18,7 @@ int main()
 	sigemptyset(&act.sa_mask);
 	act.sa_flags=0;
 	sigaction(SIGALRM, &act, 0);
-	alarm(2);
+	//alarm(2);
 	for(int i = 0;i<3;i++)
 	{
 		puts("wait...");

@@ -6,48 +6,50 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/02/17 20:42:18 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/02/19 20:08:21 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	sig_1(int sig)
+void	sig_hand(int sig) 
 {
-	if (sig == SIGUSR1)
-	{
-		write(1, "0", 1);
-	}		
-}
+	static int	i;
+	static int	c;
 
-void	sig_2(int sig)l
-{
-	if (sig == SIGUSR2)
+	if (i < 8)
 	{
-		write(1, "1", 1);
+		c *= 2;
+		if (sig == SIGUSR2)
+			c += 1;
+		i++;
+		if (i == 8)
+		{
+			write(1, &c, 1);
+			i = 0;
+			c = 0;
+		}
+		return ;
 	}
 }
 
-int	main(int argc, char *argv[])
+int	main()
 {
-	pid_t				p_id;
-	struct sigaction	act1;
-	struct sigaction	act2;
+	struct sigaction	act;
 	int					i;
+	int					n;
 
-	act1.sa_handler=sig_1;
-	act2.sa_handler=sig_2;
-	sigemptyset(&act1.sa_mask);
-	sigempytset(&act2.sa_mask);
-	act1.sa_flags=0;
-	act2.sa_flags=0;
-	sigaction(SIGUSR1, &sig_1, 0);
-	sigaction(SIGUSR2, &sig_2, 0);
-	p_id = getpid();
-	ft_putnbr(1, pid_t);
-	i = 0;
-	while (i < 8)
+	write(1, "SERVER PID : ", 14);
+	n = getpid();
+	ft_putnbr_fd(n, 1);
+	write(1, "\n", 2);
+	act.sa_handler=sig_hand;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags=0;
+	sigaction(SIGUSR1, &act, 0);
+	sigaction(SIGUSR2, &act, 0);
+	while (1)
 	{
-		
+		usleep(100);
 	}
 }
