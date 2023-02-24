@@ -6,7 +6,7 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/02/19 20:16:41 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/02/21 10:46:15 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,17 @@ int	main(int argc, char *argv[])
 	int	pid;
 	int	i;
 	
-	pid = ft_atoi(argv[1]);
-	i = 0;
-	while (argv[2][i])
+	if (argc == 3)
 	{
-		send_bits(pid, argv[2][i]);
-		i++;
+		pid = ft_atoi(argv[1]);
+		i = 0;
+		while (argv[2][i])
+		{
+			send_bits(pid, argv[2][i]);
+			i++;
+		}
 	}
+	else
+		write(1, "Argc should be 3.\n", 19);
 	return (0);
 }
