@@ -6,7 +6,7 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/02/19 20:08:21 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/04/27 22:15:04 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ int	main()
 	act.sa_handler=sig_hand;
 	sigemptyset(&act.sa_mask);
 	act.sa_flags=0;
-	sigaction(SIGUSR1, &act, 0);
-	sigaction(SIGUSR2, &act, 0);
+	if (sigaction(SIGUSR1, &act, 0) < 0 || sigaction(SIGUSR2, &act, 0) < 0)
+	{
+		write(1, "sigaction failed.", 18);
+		return (0);
+	}
 	while (1)
 	{
 		usleep(100);
