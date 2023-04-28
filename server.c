@@ -6,7 +6,7 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/04/27 22:15:04 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/04/29 02:29:33 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	sig_hand(int sig)
 int	main()
 {
 	struct sigaction	act;
-	int					i;
 	int					n;
 
 	write(1, "SERVER PID : ", 14);
