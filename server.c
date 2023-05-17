@@ -52,6 +52,6 @@ int	main()
 	}
 	while (1)
 	{
-		usleep(100);
+		pause();
 	}
 }
