@@ -6,7 +6,7 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:47:57 by changhyl          #+#    #+#             */
-/*   Updated: 2023/02/17 19:28:23 by changhyl         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:18:09 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,6 @@ static void	print_result(int nb, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int		length;
-	int		div_val;
-
-	length = how_long(n);
-	div_val = make_divide(how_long(n));
 	if (n == 0)
 	{
 		write(fd, "0", 1);
