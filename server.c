@@ -6,13 +6,13 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/04/29 02:29:33 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:51:39 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	sig_hand(int sig) 
+void	sig_hand(int sig)
 {
 	static int	i;
 	static int	c;
@@ -33,7 +33,7 @@ void	sig_hand(int sig)
 	}
 }
 
-int	main()
+int	main(void)
 {
 	struct sigaction	act;
 	int					n;
@@ -42,9 +42,9 @@ int	main()
 	n = getpid();
 	ft_putnbr_fd(n, 1);
 	write(1, "\n", 2);
-	act.sa_handler=sig_hand;
+	act.sa_handler = sig_hand;
 	sigemptyset(&act.sa_mask);
-	act.sa_flags=0;
+	act.sa_flags = 0;
 	if (sigaction(SIGUSR1, &act, 0) < 0 || sigaction(SIGUSR2, &act, 0) < 0)
 	{
 		write(1, "sigaction failed.", 18);

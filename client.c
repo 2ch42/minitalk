@@ -6,7 +6,7 @@
 /*   By: changhyl <changhyl@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 21:30:49 by changhyl          #+#    #+#             */
-/*   Updated: 2023/04/29 16:42:09 by changhyl         ###   ########.fr       */
+/*   Updated: 2023/05/28 23:23:55 by changhyl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	send_bits(int pid, char c)
 	divider = 128;
 	while (divider > 0)
 	{
-		if (c/divider == 0)
+		if (c / divider == 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 {
 	int	pid;
 	int	i;
-	
+
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
